@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="title">LLISTAT DE TRACKS</span>
+                    <!-- <button class="btn btn-success float-end" routerLink="/crear-user">NOU USER</button> -->
+                    <table *ngIf="listTracks.length > 0" class="table table-striped mt-3">
+                     <thead>
+                       <tr>
+                         <th scope="col">Title</th>
+                         <th scope="col">Singer</th>
+                         <th scope="col">Year</th>
+                         <th scope="col">Duration</th>
+                         <th scope="col"></th>
+                       </tr>
+                     </thead>
+                     <tbody>
+                       <tr *ngFor="let track of listTracks">
+                         <td>{{ track.title }}</td>
+                         <td>{{ track.singer }}</td>
+                         <td>{{ track.year }}</td>
+                         <td>{{ track.duration}}</td>
+                         <td>
+                             <i [routerLink]="['/editar-track', track.title]" class="fa-solid fa-pen-to-square text-primary"></i>
+                             <i (click)="deleteTrack(track.title)" class="fa-solid fa-trash text-danger"></i>
+                         </td>
+                       </tr>
+                     </tbody>
+                   </table>
+                   <h5 style="text-align: start; margin-top: 10px;" *ngIf="listTracks.length == 0">No hi ha tracks a la base de dades</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
